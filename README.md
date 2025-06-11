@@ -104,13 +104,6 @@ Want to help? Start by understanding the [Vault architecture](./vault/) and [Ech
 
 ---
 
-## 🕊 License
-
-Y is built with care, transparency, and long-term alignment in mind.  
-License: [MIT](./LICENSE) *(subject to change as we formalize the foundation).*
-
----
-
 ## 🙏 A Note From the Founder
 
 Y was born out of a deep belief:
