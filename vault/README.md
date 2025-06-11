@@ -1,3 +1,5 @@
+# 🪪 Vault
+
 The Vault is the foundation of Y — a structured, sovereign, intelligent container for everything a human is, does, and chooses to share.
 
 It’s not just data storage. It’s the record of a life. A system that turns identity, behavior, and context into usable, valuable signal — owned and controlled by the individual.
