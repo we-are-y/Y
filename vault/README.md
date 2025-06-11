@@ -1,4 +1,4 @@
-# 🪪 Vault
+# 🪪 the VAULT
 
 The Vault is the foundation of Y — a structured, sovereign, intelligent container for everything a human is, does, and chooses to share.
 
