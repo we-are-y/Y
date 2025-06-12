@@ -18,6 +18,9 @@
             --text-secondary: #333333;
             --border: #EEEEEE;
             --grid: #F5F5F5;
+            --success: #00C853;
+            --warning: #FFD600;
+            --error: #FF3D00;
         }
 
         * {
@@ -54,6 +57,23 @@
             background-size: 50px 50px;
             pointer-events: none;
             z-index: 0;
+        }
+
+        .brand {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: -0.05em;
+            color: var(--text);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .brand:hover {
+            opacity: 0.7;
         }
 
         .header {
@@ -181,17 +201,76 @@
             list-style: none;
         }
 
-        .permissions li {
-            padding: 1.5rem;
-            margin-bottom: 1px;
+        .permission-item {
             background: var(--surface);
+            margin-bottom: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .permission-item:hover {
+            background: var(--background);
+        }
+
+        .permission-header {
+            padding: 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
         }
 
-        .permissions li:last-child {
-            margin-bottom: 0;
+        .permission-content {
+            padding: 0 1.5rem 1.5rem;
+            display: none;
+        }
+
+        .permission-content.active {
+            display: block;
+        }
+
+        .permission-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .detail-item {
+            font-size: 0.9rem;
+        }
+
+        .detail-label {
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            color: var(--text);
+        }
+
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        .status.active {
+            background: rgba(0, 200, 83, 0.1);
+            color: var(--success);
+        }
+
+        .status.expiring {
+            background: rgba(255, 214, 0, 0.1);
+            color: var(--warning);
+        }
+
+        .status.expired {
+            background: rgba(255, 61, 0, 0.1);
+            color: var(--error);
         }
 
         .expiry {
@@ -204,6 +283,12 @@
         }
 
         @media (max-width: 768px) {
+            .brand {
+                top: 1rem;
+                left: 1rem;
+                font-size: 1.5rem;
+            }
+
             .header {
                 padding: 4rem 1rem 2rem;
             }
@@ -219,11 +304,16 @@
             .category {
                 padding: 2rem;
             }
+
+            .permission-details {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="grid"></div>
+    <a href="#" class="brand">Y</a>
     
     <div class="container">
         <div class="header">
@@ -269,20 +359,95 @@
         <div class="permissions">
             <h2>Active Permissions</h2>
             <ul>
-                <li>
-                    <span>Research Company A - Health Data</span>
-                    <span class="expiry">Expires: 2024-12-31</span>
+                <li class="permission-item">
+                    <div class="permission-header">
+                        <span>Research Company A - Health Data</span>
+                        <span class="status active">Active</span>
+                    </div>
+                    <div class="permission-content">
+                        <div class="permission-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Access Level</div>
+                                <div class="detail-value">Full Access</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Data Types</div>
+                                <div class="detail-value">Biometric, Health Records</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Usage</div>
+                                <div class="detail-value">Medical Research</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Expires</div>
+                                <div class="detail-value">2024-12-31</div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
-                <li>
-                    <span>AI Assistant B - Behavioral Data</span>
-                    <span class="expiry">Expires: 2024-12-31</span>
+                <li class="permission-item">
+                    <div class="permission-header">
+                        <span>AI Assistant B - Behavioral Data</span>
+                        <span class="status expiring">Expiring Soon</span>
+                    </div>
+                    <div class="permission-content">
+                        <div class="permission-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Access Level</div>
+                                <div class="detail-value">Limited Access</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Data Types</div>
+                                <div class="detail-value">Behavioral, Location</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Usage</div>
+                                <div class="detail-value">Personal Assistant</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Expires</div>
+                                <div class="detail-value">2024-12-31</div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
-                <li>
-                    <span>Wellness App C - Biometric Data</span>
-                    <span class="expiry">Expires: 2024-12-31</span>
+                <li class="permission-item">
+                    <div class="permission-header">
+                        <span>Wellness App C - Biometric Data</span>
+                        <span class="status active">Active</span>
+                    </div>
+                    <div class="permission-content">
+                        <div class="permission-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Access Level</div>
+                                <div class="detail-value">Read Only</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Data Types</div>
+                                <div class="detail-value">Biometric, Activity</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Usage</div>
+                                <div class="detail-value">Health Tracking</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Expires</div>
+                                <div class="detail-value">2024-12-31</div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
+
+    <script>
+        document.querySelectorAll('.permission-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html> 
