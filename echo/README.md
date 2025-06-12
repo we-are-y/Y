@@ -55,6 +55,15 @@ Echo operates on three main principles:
 2. **Context**: Understands and maintains conversation state
 3. **Personality**: Adapts its communication style to match yours
 
+## 🧩 Schema Registry & Dynamic Memory
+
+Echo is fully extensible and adapts to any data type via the **schema registry**. This means:
+- Echo can understand and reason about any new data type added to the Vault
+- The memory layer is built from schema-aligned entries, ensuring structured, versioned, and rich context
+- Prompt/response logging and per-user embedding metadata enable transparency, replay, and continuous improvement
+
+As new schemas are registered, Echo's capabilities and insights grow automatically—no code changes required.
+
 ## Contributing
 
 1. Fork the repository
