@@ -87,6 +87,13 @@ Y/
 2. Join our developer community
 3. Request access to development resources
 
+### Module Development
+- **No Full Repository Required**: Developers only need our SDK and API documentation to build modules
+- **Development Kit**: Use our SDK to integrate with the Vault protocol
+- **API Access**: Connect to the Vault through our secure API endpoints
+- **Testing**: Test modules in our sandbox environment
+- **Deployment**: Deploy approved modules through our module registry
+
 ## 🎯 Key Features
 
 - **Data Sovereignty**: Complete control over your personal data
@@ -116,13 +123,14 @@ Each component has its own detailed documentation:
 
 ## 🤝 Contributing
 
-We welcome contributions to Y! Here's how you can get involved:
+We welcome contributions to Y's ecosystem! Here's how you can get involved:
 
-### For Developers
-1. **Fork & Clone**: Feel free to fork and clone the repository to experiment and develop modules
-2. **Module Development**: Build Vault-native modules that integrate with Y's protocol
-3. **Testing**: Ensure your modules work within the Vault interface
-4. **Documentation**: Keep documentation up-to-date with your changes
+### For Module Developers
+1. **Review Guidelines**: Study our [Module Development Guide](docs/modules.md)
+2. **Get Access**: Request SDK and API access through our developer portal
+3. **Build**: Develop your module using our SDK
+4. **Test**: Use our sandbox environment
+5. **Submit**: Deploy through our module registry
 
 ### For Researchers
 1. **Data Access**: Request access to anonymized data through our research portal
@@ -131,7 +139,7 @@ We welcome contributions to Y! Here's how you can get involved:
 
 ### For Users
 1. **Feedback**: Share your experience and suggestions
-2. **Testing**: Help test new features and modules
+2. **Testing**: Help test new modules and features
 3. **Community**: Join our community discussions
 
 ### Repository Access

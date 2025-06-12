@@ -1,5 +1,28 @@
 # 🧩 Vault-Native Modules: What You Can Build
 
+## Module Development Requirements
+
+### What You Need
+- **SDK**: Our development kit for Vault integration
+- **API Documentation**: Endpoints and authentication details
+- **Sandbox Environment**: For testing your modules
+- **Module Registry**: For deploying approved modules
+
+### What You Don't Need
+- Full repository access
+- Direct database access
+- Core protocol implementation details
+- Internal system architecture
+
+### Development Process
+1. Review module guidelines
+2. Develop using our SDK
+3. Test in sandbox
+4. Submit for review
+5. Deploy through registry
+
+---
+
 All modules, dashboards, and agents below are built for the Vault — not as standalone apps. They are delivered through Y's protocol, surfaced in your interface, and governed by user consent.
 
 ---
