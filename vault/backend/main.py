@@ -46,6 +46,21 @@ class VaultEntry(BaseModel):
     created_at: datetime
     updated_at: datetime
 
+class SchemaField(BaseModel):
+    name: str
+    type: str
+    unit: Optional[str] = None
+    description: Optional[str] = None
+
+class SchemaRegistryEntry(BaseModel):
+    type: str
+    display_name: str
+    version: int = 1
+    fields: list[SchemaField]
+    category: Optional[str] = None
+    visibility: Optional[str] = "private"
+    ui_widget_hint: Optional[str] = None
+
 # Routes
 @app.post("/vault/entries")
 async def create_entry(entry: VaultEntry):
@@ -78,6 +93,19 @@ async def list_entries(
             query = query.eq("data_type", data_type)
         result = query.range(offset, offset + limit - 1).execute()
         return result.data
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@app.post("/schemas/register")
+async def register_schema(schema: SchemaRegistryEntry):
+    # Check if schema with type and version already exists
+    existing = supabase.table("schema_registry").select("*") \
+        .eq("type", schema.type).eq("version", schema.version).execute()
+    if existing.data:
+        raise HTTPException(status_code=409, detail="Schema with this type and version already exists.")
+    try:
+        result = supabase.table("schema_registry").insert(schema.dict()).execute()
+        return {"message": "Schema registered successfully", "schema": result.data}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
