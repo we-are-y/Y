@@ -68,6 +68,18 @@ The MCP follows these principles:
 - Configuration Templates
 - Integration Points
 
+## 🧩 Schema Registry, Extensibility, and Integration
+
+The MCP leverages the **schema registry** to:
+- Dynamically adapt to new data types and context structures as they are registered
+- Ensure all agents and workflows operate on schema-aligned, versioned data
+- Enable system-wide context management that evolves with the Vault and Signal Layer
+
+MCP integrates with both the Vault (for data retrieval and context) and Echo (for memory and agent orchestration), ensuring:
+- Seamless, extensible context flows
+- Dynamic workflows that adapt to new schemas and user data
+- System-wide adaptability as Y evolves
+
 ## Contributing
 
 1. Fork the repository
