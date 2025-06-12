@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y - Vault Demo</title>
+    <title>Y - The Foundation of Sovereign Intelligence</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #8A2BE2;
-            --primary-light: #9D4EDD;
-            --secondary: #2D3748;
-            --accent: #00F5A0;
-            --background: #0A0A0A;
-            --surface: #1A1A1A;
-            --text: #FFFFFF;
-            --text-secondary: #A0AEC0;
+            --primary: #2D3748;
+            --primary-light: #4A5568;
+            --secondary: #1A202C;
+            --accent: #4299E1;
+            --background: #FFFFFF;
+            --surface: #F7FAFC;
+            --text: #1A202C;
+            --text-secondary: #4A5568;
+            --border: #E2E8F0;
         }
 
         * {
@@ -31,66 +32,51 @@
             background: var(--background);
             color: var(--text);
             min-height: 100vh;
+            font-weight: 300;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
             position: relative;
-            padding: 2rem 0;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
         }
 
         .header h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeIn 1s ease-out;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            letter-spacing: -0.02em;
         }
 
         .header p {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            animation: slideUp 1s ease-out;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
 
         .value-score {
             text-align: center;
             margin: 4rem 0;
-            padding: 2rem;
+            padding: 3rem;
             background: var(--surface);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: fadeIn 1s ease-out;
+            border-radius: 2px;
+            border: 1px solid var(--border);
         }
 
         .value-score h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
+            font-weight: 300;
             margin-bottom: 1rem;
-            color: var(--accent);
+            color: var(--text);
         }
 
         .value-score p {
@@ -100,7 +86,7 @@
 
         .data-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
@@ -108,50 +94,51 @@
         .category {
             background: var(--surface);
             padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 1s ease-out;
+            border-radius: 2px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease;
         }
 
         .category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
         }
 
         .category h3 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 400;
             margin-bottom: 1rem;
-            color: var(--primary-light);
+            color: var(--text);
         }
 
         .category p {
             color: var(--text-secondary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
         .value-tag {
             display: inline-block;
-            padding: 0.5rem 1rem;
-            background: rgba(0, 245, 160, 0.1);
+            padding: 0.25rem 0.75rem;
+            background: var(--surface);
             color: var(--accent);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-top: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            font-size: 0.85rem;
+            font-weight: 400;
         }
 
         .permissions {
             background: var(--surface);
             padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: fadeIn 1s ease-out;
+            border-radius: 2px;
+            border: 1px solid var(--border);
         }
 
         .permissions h2 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
+            font-weight: 400;
             margin-bottom: 1.5rem;
-            color: var(--primary-light);
+            color: var(--text);
         }
 
         .permissions ul {
@@ -161,72 +148,40 @@
         .permissions li {
             padding: 1rem;
             margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 2px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: transform 0.3s ease;
-        }
-
-        .permissions li:hover {
-            transform: translateX(5px);
         }
 
         .expiry {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .manifesto {
+            text-align: center;
+            margin: 6rem 0;
+            padding: 0 2rem;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .glow {
-            position: fixed;
-            width: 50vw;
-            height: 50vh;
-            background: var(--primary);
-            filter: blur(100px);
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .glow-1 {
-            top: 0;
-            left: 0;
-        }
-
-        .glow-2 {
-            bottom: 0;
-            right: 0;
-            background: var(--accent);
+        .manifesto p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
 
         @media (max-width: 768px) {
             .container {
-                padding: 1rem;
+                padding: 2rem 1rem;
             }
 
             .header h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .data-categories {
@@ -236,39 +191,40 @@
     </style>
 </head>
 <body>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    
     <div class="container">
         <div class="header">
-            <h1>🪪 The Vault</h1>
-            <p>Your Digital Sanctuary</p>
+            <h1>The Foundation of Sovereign Intelligence</h1>
+            <p>A new era of human-computer interaction, where every person owns their data, trains their own AI, and earns from what they generate.</p>
+        </div>
+
+        <div class="manifesto">
+            <p>Y is not just a system. It's the infrastructure layer for sovereign human intelligence — a future where personal data becomes personal power, and every individual has agency over their digital existence.</p>
         </div>
 
         <div class="value-score">
             <h2>Vault Score: 850</h2>
-            <p>Your data is highly valuable and in demand!</p>
+            <p>Your data is highly valuable and in demand</p>
         </div>
 
         <div class="data-categories">
             <div class="category">
-                <h3>🧩 Cognitive Patterns</h3>
-                <p>Attention maps, focus cycles</p>
+                <h3>Cognitive Patterns</h3>
+                <p>Attention maps, focus cycles, and thought processes that define your unique cognitive signature.</p>
                 <span class="value-tag">High Value</span>
             </div>
             <div class="category">
-                <h3>🎭 Emotional & Mental State</h3>
-                <p>Mood tracking, therapy notes</p>
+                <h3>Emotional & Mental State</h3>
+                <p>Mood tracking, therapy notes, and emotional patterns that shape your mental landscape.</p>
                 <span class="value-tag">Medium Value</span>
             </div>
             <div class="category">
-                <h3>💪 Biometric Health</h3>
-                <p>Sleep data, HRV, cycle tracking</p>
+                <h3>Biometric Health</h3>
+                <p>Sleep data, HRV, cycle tracking, and other vital signs that map your physical wellbeing.</p>
                 <span class="value-tag">High Value</span>
             </div>
             <div class="category">
-                <h3>📊 Behavioral Metadata</h3>
-                <p>App usage, location, habits</p>
+                <h3>Behavioral Metadata</h3>
+                <p>App usage, location patterns, and habits that form your digital footprint.</p>
                 <span class="value-tag">Medium Value</span>
             </div>
         </div>
