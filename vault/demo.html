@@ -102,14 +102,13 @@
         }
 
         .system-message {
+            background: var(--surface);
+            border-radius: 1rem;
+            margin: 2rem auto 2rem auto;
+            max-width: 900px;
+            padding: 1.5rem 2rem 2.5rem 2rem;
+            overflow: visible;
             position: relative;
-            padding: 4rem 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .system-message p {
@@ -146,14 +145,9 @@
         .vault-preview-content {
             max-width: 1200px;
             margin: 0 auto;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .vault-preview-content.visible {
             opacity: 1;
             transform: translateY(0);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .system-status {
@@ -781,9 +775,247 @@
             content: '✨';
             margin-left: 0.4em;
         }
+
+        /* Section Transitions */
+        .section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Responsive Tweaks */
+        @media (max-width: 900px) {
+            .dashboard-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .dashboard-card {
+                min-width: unset;
+                padding: 1.5rem 1rem;
+            }
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+            .dashboard-card {
+                padding: 1rem 0.5rem;
+                font-size: 0.95rem;
+            }
+            .access-request-card {
+                padding: 1rem 0.5rem;
+            }
+        }
+        /* Realistic Avatars/Logos */
+        .access-request-logo img {
+            border-radius: 8px;
+            background: #fff;
+            border: 1px solid #eee;
+        }
+        .permission-header .company-logo {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            margin-right: 0.75rem;
+            object-fit: cover;
+            background: #fff;
+            border: 1px solid #eee;
+        }
+        /* Modularized Card Styles */
+        .card {
+            background: var(--surface);
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .card-header {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+        .card-content {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        /* Dashboard Card Expand */
+        .dashboard-card {
+            cursor: pointer;
+            position: relative;
+            transition: box-shadow 0.2s;
+        }
+        .dashboard-card.expanded {
+            z-index: 10;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+        }
+        .dashboard-card-details {
+            display: none;
+            background: var(--surface);
+            border-radius: 0 0 1rem 1rem;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.08);
+            padding: 1.5rem 2rem;
+            margin-top: 0.5rem;
+            position: static;
+        }
+        .dashboard-card.expanded .dashboard-card-details {
+            display: block;
+        }
+        /* Toggle Switch */
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .toggle-switch input[type="checkbox"] {
+            width: 40px;
+            height: 20px;
+            appearance: none;
+            background: var(--border);
+            border-radius: 10px;
+            position: relative;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .toggle-switch input[type="checkbox"]:checked {
+            background: var(--accent);
+        }
+        .toggle-switch input[type="checkbox"]::before {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 2px;
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border-radius: 50%;
+            transition: transform 0.2s;
+        }
+        .toggle-switch input[type="checkbox"]:checked::before {
+            transform: translateX(20px);
+        }
+        /* Activity Log */
+        .activity-log {
+            margin: 2rem 0;
+        }
+        .activity-log-list {
+            list-style: none;
+            padding: 0;
+        }
+        .activity-log-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        /* Echo Preview */
+        .echo-preview {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            background: var(--surface);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+        .echo-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        .echo-preview-content {
+            flex: 1;
+        }
+        .echo-preview-content h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+        .echo-preview-content p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+        /* Vault Score Tips */
+        .score-tips {
+            background: var(--surface);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .score-tips h4 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        .score-tips ul {
+            padding-left: 1.2rem;
+        }
+        .score-tips li {
+            margin-bottom: 0.7rem;
+            color: var(--text-secondary);
+        }
+        /* Onboarding Modal */
+        .onboarding-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .onboarding-modal.active {
+            display: flex;
+        }
+        .onboarding-content {
+            background: var(--background);
+            border-radius: 1.5rem;
+            padding: 2.5rem 2rem;
+            max-width: 400px;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+            text-align: center;
+        }
+        .onboarding-content h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .onboarding-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .onboarding-content button {
+            background: var(--accent);
+            color: var(--background);
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <div class="onboarding-modal" id="onboardingModal">
+        <div class="onboarding-content">
+            <h2>Welcome to Y</h2>
+            <p>This is your sovereign data Vault. Here, you own your data, train your AI, and earn from your signal. Ready to begin?</p>
+            <button onclick="closeOnboarding()">Get Started</button>
+        </div>
+    </div>
     <div class="grid"></div>
     <a href="#" class="brand">Y</a>
     
@@ -792,7 +1024,11 @@
             <h1>Sovereign Intelligence Infrastructure</h1>
             <p>A new era of human-computer interaction, where every person owns their data, trains their own AI, and earns from what they generate.</p>
         </div>
-
+        <div class="toggle-switch">
+            <label for="demoToggle">Demo Data</label>
+            <input type="checkbox" id="demoToggle" checked disabled>
+            <span style="color:var(--text-secondary);font-size:0.95rem;">(Real data coming soon)</span>
+        </div>
         <div class="vault-preview">
             <div class="vault-preview-content">
                 <div class="status-grid">
@@ -821,47 +1057,78 @@
         </div>
 
         <!-- DASHBOARD CARDS -->
-        <div class="dashboard-row">
-            <div class="dashboard-card">
+        <div class="dashboard-row section" id="dashboardSection">
+            <div class="dashboard-card" onclick="toggleCardDetails(this, 0)">
                 <h4>Monthly Earnings</h4>
                 <div class="main-value" id="monthlyEarnings">$0.00 <span class="positive" id="earningsGrowth"></span></div>
                 <div class="sub-metrics">
                     <span>Monthly Payments <span class="highlight" id="monthlyPayments">$0.00</span></span>
                     <span>Signup Bonuses <span class="highlight" id="signupBonuses">$0.00</span></span>
                 </div>
+                <div class="dashboard-card-details">
+                    <strong>Breakdown:</strong>
+                    <ul>
+                        <li>Health Research: $55.00</li>
+                        <li>Market Research: $40.00</li>
+                        <li>Signup Bonuses: $300.00</li>
+                    </ul>
+                </div>
             </div>
-            <div class="dashboard-card">
+            <div class="dashboard-card" onclick="toggleCardDetails(this, 1)">
                 <h4>Active Data Shares</h4>
                 <div class="main-value" id="activeShares">0</div>
                 <div class="sub-metrics">
                     <span>Health Research <span class="inactive">0 Active</span></span>
                     <span>Market Research <span class="inactive">0 Active</span></span>
                 </div>
+                <div class="dashboard-card-details">
+                    <strong>Details:</strong>
+                    <ul>
+                        <li>Health Research: 0</li>
+                        <li>Market Research: 0</li>
+                    </ul>
+                </div>
             </div>
-            <div class="dashboard-card">
+            <div class="dashboard-card" onclick="toggleCardDetails(this, 2)">
                 <h4>Earning Potential</h4>
                 <div class="main-value" id="earningPotential">$0.00/mo</div>
                 <div class="sub-metrics">
                     <span>Available Bonuses <span class="highlight" id="availableBonuses">$0.00</span></span>
                     <span>Pending Requests <span class="pending" id="pendingRequests">0</span></span>
                 </div>
+                <div class="dashboard-card-details">
+                    <strong>Pending:</strong>
+                    <ul>
+                        <li>Digital Behavior Lab: $65/mo</li>
+                        <li>Apple Health Research: $80/mo</li>
+                        <li>Calm App Analytics: $50/mo</li>
+                    </ul>
+                </div>
             </div>
-            <div class="dashboard-card">
+            <div class="dashboard-card" onclick="toggleCardDetails(this, 3)">
                 <h4>Data Quality Score</h4>
                 <div class="main-value" id="dataQualityScore">0%</div>
                 <div class="sub-metrics">
                     <span>Completeness <span class="highlight" id="completeness">0%</span></span>
                     <span>Consistency <span class="highlight" id="consistency">0%</span></span>
                 </div>
+                <div class="dashboard-card-details">
+                    <strong>Quality Factors:</strong>
+                    <ul>
+                        <li>Completeness: 98%</li>
+                        <li>Consistency: 92%</li>
+                        <li>Freshness: High</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <!-- DATA ACCESS REQUESTS -->
-        <div class="access-requests-section">
+        <div class="access-requests-section section" id="requestsSection">
             <div class="access-requests-title"><span>👁️</span> Data Access Requests <a href="#" style="margin-left:auto;color:var(--accent);font-size:1rem;text-decoration:none;">View All Requests</a></div>
             <div class="access-request-card">
                 <div class="access-request-header">
-                    <div class="access-request-logo"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Digital Behavior Lab" style="width:100%;height:100%;object-fit:cover;"></div>
+                    <div class="access-request-logo"><img src="https://logo.clearbit.com/mit.edu" alt="Digital Behavior Lab" style="width:100%;height:100%;object-fit:cover;"></div>
                     <div class="company-info">
                         <span class="company-name">Digital Behavior Lab</span>
                         <span class="company-type">Academic Research</span>
@@ -875,6 +1142,54 @@
                 </div>
                 <div class="access-request-comp">
                     $65/month + $175 signup bonus
+                </div>
+                <div class="access-request-actions">
+                    <button class="consider">Consider</button>
+                    <button class="accept">Accept</button>
+                    <button class="counter">Counter</button>
+                    <button class="decline">Decline</button>
+                </div>
+            </div>
+            <div class="access-request-card">
+                <div class="access-request-header">
+                    <div class="access-request-logo"><img src="https://logo.clearbit.com/apple.com" alt="Apple Health Research" style="width:100%;height:100%;object-fit:cover;"></div>
+                    <div class="company-info">
+                        <span class="company-name">Apple Health Research</span>
+                        <span class="company-type">Corporate Health</span>
+                    </div>
+                </div>
+                <div class="access-request-details">
+                    Sleep and biometric data for longitudinal health study
+                </div>
+                <div class="access-request-meta">
+                    6 mons • Auto-revoke on 12/01/2025
+                </div>
+                <div class="access-request-comp">
+                    $80/month + $200 signup bonus
+                </div>
+                <div class="access-request-actions">
+                    <button class="consider">Consider</button>
+                    <button class="accept">Accept</button>
+                    <button class="counter">Counter</button>
+                    <button class="decline">Decline</button>
+                </div>
+            </div>
+            <div class="access-request-card">
+                <div class="access-request-header">
+                    <div class="access-request-logo"><img src="https://logo.clearbit.com/calm.com" alt="Calm App Analytics" style="width:100%;height:100%;object-fit:cover;"></div>
+                    <div class="company-info">
+                        <span class="company-name">Calm App Analytics</span>
+                        <span class="company-type">Wellness App</span>
+                    </div>
+                </div>
+                <div class="access-request-details">
+                    Mood and sleep data for app personalization and research
+                </div>
+                <div class="access-request-meta">
+                    3 mons • Auto-revoke on 10/15/2025
+                </div>
+                <div class="access-request-comp">
+                    $50/month + $100 signup bonus
                 </div>
                 <div class="access-request-actions">
                     <button class="consider">Consider</button>
@@ -1148,8 +1463,9 @@
             content.classList.toggle('active');
         }
 
-        // Animate Vault Score (count up)
+        // Animate Vault Score (count up) for both status grid and dashboard card
         function animateCountUp(element, target, prefix = '', suffix = '', duration = 1800, decimals = 0) {
+            if (!element) return;
             let start = 0;
             let startTime = null;
             function animateStep(timestamp) {
@@ -1166,14 +1482,45 @@
             requestAnimationFrame(animateStep);
         }
 
-        // Animate dashboard values on load
+        // Start system message animation (fade in paragraphs, but do not delay main UI)
+        const paragraphs = document.querySelectorAll('.system-message p');
+        paragraphs.forEach((p, index) => {
+            setTimeout(() => {
+                p.classList.add('visible');
+            }, index * 800);
+        });
+
+        // Section fade-in transitions
         window.addEventListener('DOMContentLoaded', () => {
-            // Vault Score
-            const vaultScore = document.querySelector('.vault-score');
-            if (vaultScore) {
-                animateCountUp(vaultScore, 850, '', '', 1800, 0);
+            setTimeout(() => document.getElementById('dashboardSection').classList.add('visible'), 200);
+            setTimeout(() => document.getElementById('requestsSection').classList.add('visible'), 600);
+            // Onboarding modal (show only on first visit, placeholder logic)
+            if (!localStorage.getItem('onboarded')) {
+                document.getElementById('onboardingModal').classList.add('active');
             }
-            // Dashboard cards
+        });
+        function closeOnboarding() {
+            document.getElementById('onboardingModal').classList.remove('active');
+            localStorage.setItem('onboarded', '1');
+        }
+        // Dashboard card expand/collapse
+        function toggleCardDetails(card, idx) {
+            document.querySelectorAll('.dashboard-card').forEach((el, i) => {
+                if (i !== idx) el.classList.remove('expanded');
+            });
+            card.classList.toggle('expanded');
+        }
+        // Placeholder for backend integration
+        function fetchRealData() {
+            // TODO: Integrate with backend API
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            // Vault Score in status grid
+            const statusVaultScore = document.getElementById('vaultScore');
+            if (statusVaultScore) {
+                animateCountUp(statusVaultScore, 850, '', '', 1800, 0);
+            }
+            // Dashboard cards (set correct demo values)
             animateCountUp(document.getElementById('monthlyEarnings'), 395, '$', '', 1200, 2);
             document.getElementById('earningsGrowth').textContent = '+100.0%';
             animateCountUp(document.getElementById('monthlyPayments'), 95, '$', '', 1000, 2);
@@ -1186,19 +1533,6 @@
             animateCountUp(document.getElementById('completeness'), 98, '', '%', 1000, 0);
             animateCountUp(document.getElementById('consistency'), 92, '', '%', 1000, 0);
         });
-
-        // Start system message animation
-        const paragraphs = document.querySelectorAll('.system-message p');
-        paragraphs.forEach((p, index) => {
-            setTimeout(() => {
-                p.classList.add('visible');
-            }, index * 800); // 800ms delay between each paragraph
-        });
-
-        // Show Vault preview after message
-        setTimeout(() => {
-            document.querySelector('.vault-preview-content').classList.add('visible');
-        }, paragraphs.length * 800 + 1000); // After all paragraphs + 1s
     </script>
 </body>
 </html> 
