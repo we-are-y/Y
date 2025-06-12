@@ -72,4 +72,12 @@ The API Layer follows these principles:
 
 ## License
 
-MIT 
+MIT
+
+## 🧩 Human & Enterprise APIs, Extensibility, and Schema Registry
+
+The API Layer supports both **Human API** (for accessing individual user Vaults with consent) and **Enterprise API** (for business-to-business data access, e.g., enterprise data from platforms like Tesla or Deliveroo).
+
+- All data requests and permissions are schema-driven, leveraging the dynamic `schema_registry` for extensibility.
+- New types of data requests and complex criteria matching can be supported without code changes—just by registering new schemas and request types.
+- The API Layer is designed to be future-proof, adapting to new data types, requesters, and value flows as the ecosystem grows. 
