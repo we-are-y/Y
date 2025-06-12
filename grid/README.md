@@ -66,6 +66,22 @@ The Grid operates on these principles:
 - Payment processing
 - Distribution logic
 
+## 🧩 Value Calculation, Schema Registry, and Extensibility
+
+The Grid powers dynamic value routing and dividend calculation using a robust model:
+- **Demand**: How many requests exist for a data type?
+- **Rarity**: Is the data common or unique?
+- **Completeness/Quality**: How detailed and well-structured is the data?
+- **Freshness**: Is the data recent?
+- **Signal Density**: Richness of behavioral/emotional/other signals
+- **Streaks & Decay**: Consistent uploads are rewarded, outdated data loses value
+
+Grid interacts with the `schema_registry` to:
+- Support new data types and value flows without code changes
+- Attribute value and route dividends for any schema-aligned entry
+
+This extensible design ensures the system can adapt to new data sources, value models, and market dynamics as Y evolves.
+
 ## Contributing
 
 1. Fork the repository
