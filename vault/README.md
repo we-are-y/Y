@@ -36,6 +36,44 @@ The Vault is the foundation of Y — a structured, sovereign, intelligent contai
 
 ---
 
+## 🧩 Schema Registry & Extensibility
+
+The Vault is powered by a dynamic **schema registry**. This means:
+- Any data type (health, behavioral, creative, etc.) can be added without code changes
+- Each data entry references a schema (with versioning) for structure and UI rendering
+- The dashboard and Echo adapt automatically to new data types
+
+Developers and users can extend the Vault by registering new schemas, which describe fields, units, display names, and UI hints.
+
+---
+
+## 💸 Value Calculation & Vault Score
+
+Your Vault's value is calculated using:
+- **Demand**: How many requests exist for this data type?
+- **Rarity**: Is your data common or unique?
+- **Completeness/Quality**: How detailed and well-structured is your data?
+- **Freshness**: Is your data recent?
+- **Signal Density**: Richness of behavioral/emotional/other signals
+- **Streaks & Decay**: Consistent uploads are rewarded, outdated data loses value
+
+Your **Vault Score** and earning potential are shown in the dashboard, with tips to increase your value.
+
+---
+
+## 🛠 How to Add New Data Types (for Developers)
+
+1. **Register a Schema**: Add a new entry to the `schema_registry` table with:
+   - `type` (e.g. "blood_test")
+   - `display_name` (e.g. "Blood Test")
+   - `version` (start with 1)
+   - `fields` (JSON array: name, type, unit, etc.)
+   - `category`, `visibility`, `ui_widget_hint`
+2. **Ingest Data**: Add entries to `vault_entries` referencing the new schema type and version.
+3. **UI/AI Adaptation**: The dashboard and Echo will automatically recognize and render the new data type.
+
+---
+
 ## 🧠 What the Vault Stores
 
 <div align="center">
