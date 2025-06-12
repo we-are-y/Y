@@ -20,6 +20,15 @@ The Signal Layer is responsible for processing raw data inputs into structured, 
 - Signal weighting
 - Confidence scoring
 
+## 🧩 Schema Registration & Extensibility
+
+The Signal Layer is fully extensible via the **schema registry**. Each processor:
+- Registers new data types and their schemas in the `schema_registry` table (fields, units, display names, etc.)
+- Maps raw data to schema-aligned entries, ensuring all data is structured and versioned
+- Enables the Vault, Echo, and dashboard to adapt automatically to new data types
+
+This design allows new processors and data sources to be added without breaking the system or requiring code changes elsewhere.
+
 ## Getting Started
 
 1. Install dependencies:
