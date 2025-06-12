@@ -625,6 +625,162 @@
             50% { opacity: 1; }
             100% { opacity: 0.8; }
         }
+
+        /* Dashboard Cards */
+        .dashboard-row {
+            display: flex;
+            gap: 2rem;
+            margin: 2.5rem 0 2rem 0;
+            flex-wrap: wrap;
+        }
+        .dashboard-card {
+            background: var(--surface);
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+            min-width: 260px;
+            flex: 1 1 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .dashboard-card h4 {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .dashboard-card .main-value {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        .dashboard-card .main-value .positive {
+            color: var(--success);
+            font-size: 1.1rem;
+            margin-left: 0.5rem;
+        }
+        .dashboard-card .sub-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .dashboard-card .sub-metrics span {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        .dashboard-card .sub-metrics .highlight {
+            color: var(--success);
+        }
+        .dashboard-card .sub-metrics .pending {
+            color: var(--accent);
+        }
+        .dashboard-card .sub-metrics .inactive {
+            color: var(--text-secondary);
+        }
+        .dashboard-card .sub-metrics .active {
+            color: var(--success);
+        }
+
+        /* Data Access Requests */
+        .access-requests-section {
+            margin-top: 2.5rem;
+        }
+        .access-requests-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 1.2rem;
+        }
+        .access-request-card {
+            background: var(--surface);
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .access-request-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .access-request-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .access-request-header .company-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .access-request-header .company-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+        .access-request-header .company-type {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        .access-request-details {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        .access-request-meta {
+            font-size: 0.98rem;
+            color: var(--text-secondary);
+        }
+        .access-request-comp {
+            color: var(--success);
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+        .access-request-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .access-request-actions button {
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem 1.2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .access-request-actions .accept {
+            background: var(--success);
+            color: var(--background);
+        }
+        .access-request-actions .counter {
+            background: var(--accent);
+            color: var(--background);
+        }
+        .access-request-actions .decline {
+            background: var(--error);
+            color: var(--background);
+        }
+        .access-request-actions .consider {
+            background: var(--surface-hover);
+            color: var(--accent);
+        }
+        .access-request-actions .consider:after {
+            content: '✨';
+            margin-left: 0.4em;
+        }
     </style>
 </head>
 <body>
@@ -635,23 +791,6 @@
         <div class="system-header">
             <h1>Sovereign Intelligence Infrastructure</h1>
             <p>A new era of human-computer interaction, where every person owns their data, trains their own AI, and earns from what they generate.</p>
-        </div>
-
-        <div class="system-message">
-            <p>You were never meant to spend your life doing work you don't care about.</p>
-            <p>Most people don't do boring jobs because they love them.</p>
-            <p>They do them because the system gave them no other way to survive.</p>
-            <p>But that system is breaking.</p>
-            <p>AI is replacing the work — and it's learning from you. From your data. Your intelligence.</p>
-            <p>It already knows your worth. It just hasn't paid you for it.</p>
-            <p>That's what Y changes.</p>
-            <p>Y turns your life into a Vault — encrypted, intelligent, and sovereign.</p>
-            <p>It gives you control. It gives you dignity. It gives you power.</p>
-            <p>You own your signal.</p>
-            <p>You train your AI.</p>
-            <p>You decide who gets access — and you get paid for what you generate.</p>
-            <p>This is not a product. It's the foundation of human sovereignty in the AI age.</p>
-            <p>Welcome to Y.</p>
         </div>
 
         <div class="vault-preview">
@@ -677,6 +816,71 @@
                 </div>
                 <div class="system-identity" style="margin-top: 2rem; text-align: center;">
                     The foundation for sovereign intelligence — where data earns, learns, and remembers
+                </div>
+            </div>
+        </div>
+
+        <!-- DASHBOARD CARDS -->
+        <div class="dashboard-row">
+            <div class="dashboard-card">
+                <h4>Monthly Earnings</h4>
+                <div class="main-value" id="monthlyEarnings">$0.00 <span class="positive" id="earningsGrowth"></span></div>
+                <div class="sub-metrics">
+                    <span>Monthly Payments <span class="highlight" id="monthlyPayments">$0.00</span></span>
+                    <span>Signup Bonuses <span class="highlight" id="signupBonuses">$0.00</span></span>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <h4>Active Data Shares</h4>
+                <div class="main-value" id="activeShares">0</div>
+                <div class="sub-metrics">
+                    <span>Health Research <span class="inactive">0 Active</span></span>
+                    <span>Market Research <span class="inactive">0 Active</span></span>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <h4>Earning Potential</h4>
+                <div class="main-value" id="earningPotential">$0.00/mo</div>
+                <div class="sub-metrics">
+                    <span>Available Bonuses <span class="highlight" id="availableBonuses">$0.00</span></span>
+                    <span>Pending Requests <span class="pending" id="pendingRequests">0</span></span>
+                </div>
+            </div>
+            <div class="dashboard-card">
+                <h4>Data Quality Score</h4>
+                <div class="main-value" id="dataQualityScore">0%</div>
+                <div class="sub-metrics">
+                    <span>Completeness <span class="highlight" id="completeness">0%</span></span>
+                    <span>Consistency <span class="highlight" id="consistency">0%</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA ACCESS REQUESTS -->
+        <div class="access-requests-section">
+            <div class="access-requests-title"><span>👁️</span> Data Access Requests <a href="#" style="margin-left:auto;color:var(--accent);font-size:1rem;text-decoration:none;">View All Requests</a></div>
+            <div class="access-request-card">
+                <div class="access-request-header">
+                    <div class="access-request-logo"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Digital Behavior Lab" style="width:100%;height:100%;object-fit:cover;"></div>
+                    <div class="company-info">
+                        <span class="company-name">Digital Behavior Lab</span>
+                        <span class="company-type">Academic Research</span>
+                    </div>
+                </div>
+                <div class="access-request-details">
+                    Research study on digital wellness and productivity patterns
+                </div>
+                <div class="access-request-meta">
+                    4 mons • Auto-revoke on 8/23/2025
+                </div>
+                <div class="access-request-comp">
+                    $65/month + $175 signup bonus
+                </div>
+                <div class="access-request-actions">
+                    <button class="consider">Consider</button>
+                    <button class="accept">Accept</button>
+                    <button class="counter">Counter</button>
+                    <button class="decline">Decline</button>
                 </div>
             </div>
         </div>
@@ -921,20 +1125,67 @@
         </div>
     </div>
 
+    <div class="system-message">
+        <p>You were never meant to spend your life doing work you don't care about.</p>
+        <p>Most people don't do boring jobs because they love them.</p>
+        <p>They do them because the system gave them no other way to survive.</p>
+        <p>But that system is breaking.</p>
+        <p>AI is replacing the work — and it's learning from you. From your data. Your intelligence.</p>
+        <p>It already knows your worth. It just hasn't paid you for it.</p>
+        <p>That's what Y changes.</p>
+        <p>Y turns your life into a Vault — encrypted, intelligent, and sovereign.</p>
+        <p>It gives you control. It gives you dignity. It gives you power.</p>
+        <p>You own your signal.</p>
+        <p>You train your AI.</p>
+        <p>You decide who gets access — and you get paid for what you generate.</p>
+        <p>This is not a product. It's the foundation of human sovereignty in the AI age.</p>
+        <p>Welcome to Y.</p>
+    </div>
+
     <script>
         function togglePermission(header) {
             const content = header.nextElementSibling;
             content.classList.toggle('active');
         }
 
-        // Animate Vault Score
-        const vaultScore = document.querySelector('.vault-score');
-        if (vaultScore) {
-            vaultScore.style.opacity = '0';
-            setTimeout(() => {
-                vaultScore.style.opacity = '1';
-            }, 1000);
+        // Animate Vault Score (count up)
+        function animateCountUp(element, target, prefix = '', suffix = '', duration = 1800, decimals = 0) {
+            let start = 0;
+            let startTime = null;
+            function animateStep(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const value = start + (target - start) * progress;
+                element.textContent = prefix + value.toFixed(decimals) + suffix;
+                if (progress < 1) {
+                    requestAnimationFrame(animateStep);
+                } else {
+                    element.textContent = prefix + target.toFixed(decimals) + suffix;
+                }
+            }
+            requestAnimationFrame(animateStep);
         }
+
+        // Animate dashboard values on load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Vault Score
+            const vaultScore = document.querySelector('.vault-score');
+            if (vaultScore) {
+                animateCountUp(vaultScore, 850, '', '', 1800, 0);
+            }
+            // Dashboard cards
+            animateCountUp(document.getElementById('monthlyEarnings'), 395, '$', '', 1200, 2);
+            document.getElementById('earningsGrowth').textContent = '+100.0%';
+            animateCountUp(document.getElementById('monthlyPayments'), 95, '$', '', 1000, 2);
+            animateCountUp(document.getElementById('signupBonuses'), 300, '$', '', 1000, 2);
+            animateCountUp(document.getElementById('activeShares'), 2, '', '', 1000, 0);
+            animateCountUp(document.getElementById('earningPotential'), 275, '$', '/mo', 1200, 2);
+            animateCountUp(document.getElementById('availableBonuses'), 775, '$', '', 1000, 2);
+            animateCountUp(document.getElementById('pendingRequests'), 4, '', '', 1000, 0);
+            animateCountUp(document.getElementById('dataQualityScore'), 94, '', '%', 1000, 0);
+            animateCountUp(document.getElementById('completeness'), 98, '', '%', 1000, 0);
+            animateCountUp(document.getElementById('consistency'), 92, '', '%', 1000, 0);
+        });
 
         // Start system message animation
         const paragraphs = document.querySelectorAll('.system-message p');
