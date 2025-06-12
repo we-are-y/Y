@@ -132,9 +132,34 @@ Each component has its own detailed documentation:
 
 ## 🤝 Contributing
 
+We welcome contributions to Y! Here's how you can get involved:
+
+### For Developers
+1. **Fork & Clone**: Feel free to fork and clone the repository to experiment and develop modules
+2. **Module Development**: Build Vault-native modules that integrate with Y's protocol
+3. **Testing**: Ensure your modules work within the Vault interface
+4. **Documentation**: Keep documentation up-to-date with your changes
+
+### For Researchers
+1. **Data Access**: Request access to anonymized data through our research portal
+2. **Protocol Development**: Help improve our consent and value exchange protocols
+3. **Validation**: Contribute to validating our privacy and security measures
+
+### For Users
+1. **Feedback**: Share your experience and suggestions
+2. **Testing**: Help test new features and modules
+3. **Community**: Join our community discussions
+
+### Repository Access
+- **Public Access**: The repository is public to encourage transparency and community involvement
+- **Module Development**: Developers can fork and clone to build and test modules
+- **Security**: All contributions are reviewed for security and compliance
+- **Licensing**: See our [LICENSE](LICENSE) file for details
+
+### Getting Started
 1. Fork the repository
 2. Create a feature branch
-3. Add tests for new functionality
+3. Make your changes
 4. Submit a pull request
 
 ## 📄 License
