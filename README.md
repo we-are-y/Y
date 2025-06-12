@@ -1,6 +1,33 @@
 # 🌟 Y
 
+## 🚀 Quick Links
+- [Vault Documentation](vault/README.md)
+- [Signal Layer Documentation](signal/README.md)
+- [Echo Documentation](echo/README.md)
+- [API Layer Documentation](api_layer/README.md)
+- [Grid Documentation](grid/README.md)
+- [MCP Documentation](mcp/README.md)
+
 Y is a comprehensive system for personal data sovereignty, AI assistance, and value attribution in the digital age.
+
+## 🧩 Schema Registry & Extensibility
+
+Y uses a dynamic **schema registry** to support any data type, now and in the future. New data types can be described (fields, units, display names, UI hints, etc.) and registered without code changes. This ensures:
+- The Vault, Echo, and dashboard adapt automatically
+- Developers and users can extend the system with new data sources
+- Backward compatibility via versioning
+
+## 💸 Value Calculation & Vault Score
+
+Y calculates the value of your Vault using a blend of:
+- **Demand**: How many requests exist for this data type?
+- **Rarity**: Is your data common or unique?
+- **Completeness/Quality**: How detailed and well-structured is your data?
+- **Freshness**: Is your data recent?
+- **Signal Density**: Richness of behavioral/emotional/other signals
+- **Streaks & Decay**: Consistent uploads are rewarded, outdated data loses value
+
+Your **Vault Score** and earning potential are shown in the dashboard, along with tips to increase your value.
 
 ## 🏗 System Architecture
 
@@ -237,4 +264,12 @@ Not as cogs. But as whole, sovereign humans.
 Thank you for being here. We're building the long game.
 
 —
+
+## 📚 Glossary
+- **Schema Registry**: A dynamic table describing all supported data types, fields, and UI hints
+- **Vault Score**: A metric estimating the value of your data based on demand, quality, and other factors
+- **Echo**: Your personal AI agent, powered by your Vault
+- **Signal Layer**: The system that processes raw data into structured, valuable signals
+- **Grid**: The value-routing and attribution engine
+- **MCP**: Model Context Protocol, orchestrating context and memory for all agents
 
