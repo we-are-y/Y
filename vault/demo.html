@@ -471,7 +471,10 @@
 
         .permission-item {
             background: var(--surface);
-            transition: background-color 0.3s ease;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            overflow: hidden;
         }
 
         .permission-item:hover {
@@ -479,15 +482,28 @@
         }
 
         .permission-header {
-            padding: 1.5rem;
+            padding: 1rem;
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .permission-header:hover {
+            background: var(--surface-hover);
+        }
+
+        .permission-header h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text);
         }
 
         .permission-content {
-            padding: 0 1.5rem 1.5rem;
+            padding: 1rem;
+            border-top: 1px solid var(--border);
             display: none;
         }
 
@@ -499,16 +515,14 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
+            margin-bottom: 1rem;
         }
 
-        .detail-item {
+        .permission-detail {
             font-size: 0.9rem;
         }
 
-        .detail-label {
+        .permission-detail-label {
             color: var(--text-secondary);
             margin-bottom: 0.25rem;
             text-transform: uppercase;
@@ -516,31 +530,37 @@
             font-size: 0.8rem;
         }
 
-        .detail-value {
+        .permission-detail-value {
             color: var(--text);
+            font-weight: 400;
         }
 
-        .status {
-            display: inline-block;
+        .permission-detail-value.accent {
+            color: var(--accent);
+        }
+
+        .permission-status {
+            display: inline-flex;
+            align-items: center;
             padding: 0.25rem 0.75rem;
             border-radius: 2px;
             font-size: 0.8rem;
             font-weight: 400;
         }
 
-        .status.active {
-            background: rgba(0, 200, 83, 0.1);
-            color: var(--success);
+        .permission-status.active {
+            background: var(--success);
+            color: var(--background);
         }
 
-        .status.expiring {
-            background: rgba(255, 214, 0, 0.1);
-            color: var(--warning);
+        .permission-status.expiring {
+            background: var(--warning);
+            color: var(--background);
         }
 
-        .status.expired {
-            background: rgba(255, 61, 0, 0.1);
-            color: var(--error);
+        .permission-status.expired {
+            background: var(--error);
+            color: var(--background);
         }
 
         .system-identity {
@@ -586,6 +606,24 @@
             .future-actions {
                 flex-direction: column;
             }
+        }
+
+        .vault-score {
+            font-size: 4rem;
+            font-weight: 500;
+            margin: 2rem 0;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: pulse 2s infinite;
+            text-align: center;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
         }
     </style>
 </head>
@@ -773,83 +811,105 @@
         </div>
 
         <div class="permissions">
-            <h2>Active Connections</h2>
-            <div class="permissions-grid">
-                <div class="permission-item">
-                    <div class="permission-header">
-                        <span>Research Company A</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <div class="permission-content">
-                        <div class="permission-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Access Level</div>
-                                <div class="detail-value">Full Access</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Data Types</div>
-                                <div class="detail-value">Biometric, Health Records</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Usage</div>
-                                <div class="detail-value">Medical Research</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Expires</div>
-                                <div class="detail-value">2024-12-31</div>
-                            </div>
+            <h3>Active Connections</h3>
+            <div class="permission-item">
+                <div class="permission-header" onclick="togglePermission(this)">
+                    <h4>OpenAI Research Division</h4>
+                    <span class="permission-status active">Active</span>
+                </div>
+                <div class="permission-content">
+                    <div class="permission-details">
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Access Level</div>
+                            <div class="permission-detail-value">Read-only</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Data Types</div>
+                            <div class="permission-detail-value">Cognitive Patterns, Language & Expression</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Usage Purpose</div>
+                            <div class="permission-detail-value">AI Model Training & Research</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Compensation</div>
+                            <div class="permission-detail-value accent">$2.50 per data point</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Last Access</div>
+                            <div class="permission-detail-value">2 hours ago</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Expires</div>
+                            <div class="permission-detail-value">30 days</div>
                         </div>
                     </div>
                 </div>
-                <div class="permission-item">
-                    <div class="permission-header">
-                        <span>AI Assistant B</span>
-                        <span class="status expiring">Expiring Soon</span>
-                    </div>
-                    <div class="permission-content">
-                        <div class="permission-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Access Level</div>
-                                <div class="detail-value">Limited Access</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Data Types</div>
-                                <div class="detail-value">Behavioral, Location</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Usage</div>
-                                <div class="detail-value">Personal Assistant</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Expires</div>
-                                <div class="detail-value">2024-12-31</div>
-                            </div>
+            </div>
+            <div class="permission-item">
+                <div class="permission-header" onclick="togglePermission(this)">
+                    <h4>Apple Health Research</h4>
+                    <span class="permission-status active">Active</span>
+                </div>
+                <div class="permission-content">
+                    <div class="permission-details">
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Access Level</div>
+                            <div class="permission-detail-value">Read-only</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Data Types</div>
+                            <div class="permission-detail-value">Biometric Health, Sleep Data</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Usage Purpose</div>
+                            <div class="permission-detail-value">Health Research & Product Development</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Compensation</div>
+                            <div class="permission-detail-value accent">$1.75 per data point</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Last Access</div>
+                            <div class="permission-detail-value">1 hour ago</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Expires</div>
+                            <div class="permission-detail-value">45 days</div>
                         </div>
                     </div>
                 </div>
-                <div class="permission-item">
-                    <div class="permission-header">
-                        <span>Wellness App C</span>
-                        <span class="status active">Active</span>
-                    </div>
-                    <div class="permission-content">
-                        <div class="permission-details">
-                            <div class="detail-item">
-                                <div class="detail-label">Access Level</div>
-                                <div class="detail-value">Read Only</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Data Types</div>
-                                <div class="detail-value">Biometric, Activity</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Usage</div>
-                                <div class="detail-value">Health Tracking</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-label">Expires</div>
-                                <div class="detail-value">2024-12-31</div>
-                            </div>
+            </div>
+            <div class="permission-item">
+                <div class="permission-header" onclick="togglePermission(this)">
+                    <h4>Calm App Analytics</h4>
+                    <span class="permission-status expiring">Expiring Soon</span>
+                </div>
+                <div class="permission-content">
+                    <div class="permission-details">
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Access Level</div>
+                            <div class="permission-detail-value">Read-only</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Data Types</div>
+                            <div class="permission-detail-value">Emotional & Mental State, Sleep Data</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Usage Purpose</div>
+                            <div class="permission-detail-value">App Personalization & Research</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Compensation</div>
+                            <div class="permission-detail-value accent">$0.75 per data point</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Last Access</div>
+                            <div class="permission-detail-value">3 days ago</div>
+                        </div>
+                        <div class="permission-detail">
+                            <div class="permission-detail-label">Expires</div>
+                            <div class="permission-detail-value">2 days</div>
                         </div>
                     </div>
                 </div>
@@ -862,52 +922,32 @@
     </div>
 
     <script>
-        // Animate Vault Score on load
-        const vaultScore = document.getElementById('vaultScore');
-        let score = 0;
-        const targetScore = 850;
-        const duration = 2000; // 2 seconds
-        const interval = 20; // Update every 20ms
-        const steps = duration / interval;
-        const increment = targetScore / steps;
+        function togglePermission(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('active');
+        }
 
-        const animateScore = () => {
-            score += increment;
-            if (score >= targetScore) {
-                score = targetScore;
-                vaultScore.textContent = Math.round(score);
-                return;
-            }
-            vaultScore.textContent = Math.round(score);
-            setTimeout(animateScore, interval);
-        };
-
-        // Start animation when page loads
-        window.addEventListener('load', () => {
-            // Start Vault Score animation
-            animateScore();
-            
-            // Start system message animation
-            const paragraphs = document.querySelectorAll('.system-message p');
-            paragraphs.forEach((p, index) => {
-                setTimeout(() => {
-                    p.classList.add('visible');
-                }, index * 800); // 800ms delay between each paragraph
-            });
-
-            // Show Vault preview after message
+        // Animate Vault Score
+        const vaultScore = document.querySelector('.vault-score');
+        if (vaultScore) {
+            vaultScore.style.opacity = '0';
             setTimeout(() => {
-                document.querySelector('.vault-preview-content').classList.add('visible');
-            }, paragraphs.length * 800 + 1000); // After all paragraphs + 1s
+                vaultScore.style.opacity = '1';
+            }, 1000);
+        }
+
+        // Start system message animation
+        const paragraphs = document.querySelectorAll('.system-message p');
+        paragraphs.forEach((p, index) => {
+            setTimeout(() => {
+                p.classList.add('visible');
+            }, index * 800); // 800ms delay between each paragraph
         });
 
-        // Toggle permission details
-        document.querySelectorAll('.permission-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                content.classList.toggle('active');
-            });
-        });
+        // Show Vault preview after message
+        setTimeout(() => {
+            document.querySelector('.vault-preview-content').classList.add('visible');
+        }, paragraphs.length * 800 + 1000); // After all paragraphs + 1s
     </script>
 </body>
 </html> 
