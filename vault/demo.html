@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y - The Foundation of Sovereign Intelligence</title>
+    <title>Y — The Foundation of Sovereign Intelligence</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2D3748;
-            --primary-light: #4A5568;
-            --secondary: #1A202C;
-            --accent: #4299E1;
+            --primary: #000000;
+            --secondary: #111111;
+            --accent: #0066FF;
             --background: #FFFFFF;
-            --surface: #F7FAFC;
-            --text: #1A202C;
-            --text-secondary: #4A5568;
-            --border: #E2E8F0;
+            --surface: #FAFAFA;
+            --text: #000000;
+            --text-secondary: #333333;
+            --border: #EEEEEE;
+            --grid: #F5F5F5;
         }
 
         * {
@@ -27,118 +27,154 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             line-height: 1.6;
             background: var(--background);
             color: var(--text);
             min-height: 100vh;
             font-weight: 300;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 0;
+        }
+
+        .grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .header {
-            text-align: center;
-            margin-bottom: 6rem;
             position: relative;
+            padding: 8rem 2rem 4rem;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .header h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: var(--text);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .manifesto {
+            position: relative;
+            padding: 6rem 2rem;
+            background: var(--surface);
+            margin: 4rem 0;
+        }
+
+        .manifesto-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .manifesto p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .manifesto p:last-child {
+            margin-bottom: 0;
+        }
+
+        .value-score {
+            position: relative;
+            text-align: left;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .value-score h2 {
             font-size: 2.5rem;
             font-weight: 300;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--text);
             letter-spacing: -0.02em;
         }
 
-        .header p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .value-score {
-            text-align: center;
-            margin: 4rem 0;
-            padding: 3rem;
-            background: var(--surface);
-            border-radius: 2px;
-            border: 1px solid var(--border);
-        }
-
-        .value-score h2 {
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
         .value-score p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1.25rem;
         }
 
         .data-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            background: var(--border);
+            margin: 4rem 0;
         }
 
         .category {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 2px;
-            border: 1px solid var(--border);
-            transition: transform 0.2s ease;
-        }
-
-        .category:hover {
-            transform: translateY(-2px);
+            background: var(--background);
+            padding: 3rem;
+            position: relative;
         }
 
         .category h3 {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 400;
             margin-bottom: 1rem;
             color: var(--text);
+            letter-spacing: -0.01em;
         }
 
         .category p {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .value-tag {
             display: inline-block;
-            padding: 0.25rem 0.75rem;
+            padding: 0.5rem 1rem;
             background: var(--surface);
             color: var(--accent);
-            border: 1px solid var(--border);
-            border-radius: 2px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 400;
         }
 
         .permissions {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 2px;
-            border: 1px solid var(--border);
+            position: relative;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .permissions h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
             color: var(--text);
+            letter-spacing: -0.02em;
         }
 
         .permissions ul {
@@ -146,85 +182,86 @@
         }
 
         .permissions li {
-            padding: 1rem;
-            margin-bottom: 1rem;
-            background: var(--background);
-            border: 1px solid var(--border);
-            border-radius: 2px;
+            padding: 1.5rem;
+            margin-bottom: 1px;
+            background: var(--surface);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .permissions li:last-child {
+            margin-bottom: 0;
+        }
+
         .expiry {
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
-        .manifesto {
-            text-align: center;
-            margin: 6rem 0;
-            padding: 0 2rem;
-        }
-
-        .manifesto p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
+        .accent {
+            color: var(--accent);
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 2rem 1rem;
+            .header {
+                padding: 4rem 1rem 2rem;
             }
 
             .header h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .data-categories {
                 grid-template-columns: 1fr;
             }
+
+            .category {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="grid"></div>
+    
     <div class="container">
         <div class="header">
-            <h1>The Foundation of Sovereign Intelligence</h1>
+            <h1>The Foundation of<br>Sovereign Intelligence</h1>
             <p>A new era of human-computer interaction, where every person owns their data, trains their own AI, and earns from what they generate.</p>
         </div>
 
         <div class="manifesto">
-            <p>Y is not just a system. It's the infrastructure layer for sovereign human intelligence — a future where personal data becomes personal power, and every individual has agency over their digital existence.</p>
+            <div class="manifesto-content">
+                <p>Y is not just a system. It's the infrastructure layer for sovereign human intelligence — a future where personal data becomes personal power, and every individual has agency over their digital existence.</p>
+                <p>We're building the foundation for a world where your data isn't just stored, but actively works for you. Where your digital footprint becomes your digital legacy. Where your intelligence isn't just captured, but amplified.</p>
+            </div>
         </div>
 
         <div class="value-score">
-            <h2>Vault Score: 850</h2>
+            <h2>Vault Score: <span class="accent">850</span></h2>
             <p>Your data is highly valuable and in demand</p>
         </div>
 
         <div class="data-categories">
             <div class="category">
                 <h3>Cognitive Patterns</h3>
-                <p>Attention maps, focus cycles, and thought processes that define your unique cognitive signature.</p>
+                <p>Attention maps, focus cycles, and thought processes that define your unique cognitive signature. This is the raw material of your mind's architecture.</p>
                 <span class="value-tag">High Value</span>
             </div>
             <div class="category">
                 <h3>Emotional & Mental State</h3>
-                <p>Mood tracking, therapy notes, and emotional patterns that shape your mental landscape.</p>
+                <p>Mood tracking, therapy notes, and emotional patterns that shape your mental landscape. The subtle rhythms of your inner world.</p>
                 <span class="value-tag">Medium Value</span>
             </div>
             <div class="category">
                 <h3>Biometric Health</h3>
-                <p>Sleep data, HRV, cycle tracking, and other vital signs that map your physical wellbeing.</p>
+                <p>Sleep data, HRV, cycle tracking, and other vital signs that map your physical wellbeing. The quantifiable story of your body.</p>
                 <span class="value-tag">High Value</span>
             </div>
             <div class="category">
                 <h3>Behavioral Metadata</h3>
-                <p>App usage, location patterns, and habits that form your digital footprint.</p>
+                <p>App usage, location patterns, and habits that form your digital footprint. The patterns that define your digital existence.</p>
                 <span class="value-tag">Medium Value</span>
             </div>
         </div>
