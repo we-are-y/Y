@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # Frontend
+  ui:
+    build:
+      context: ./vault/ui
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./vault/ui:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+
+  # Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: vault/backend/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./vault/backend:/app
+    environment:
+      - ENVIRONMENT=development
+      - DATABASE_URL=${DATABASE_URL}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - supabase
+
+  # Supabase Local Development
+  supabase:
+    image: supabase/supabase-local
+    ports:
+      - "5432:5432"
+      - "54321:54321"
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+    volumes:
+      - supabase-data:/var/lib/postgresql/data
+
+volumes:
+  supabase-data: 

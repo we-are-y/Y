@@ -1,3 +1,125 @@
+# 🌟 Y
+
+Y is a comprehensive system for personal data sovereignty, AI assistance, and value attribution in the digital age.
+
+## 🏗 System Architecture
+
+```
+Y/
+├── vault/                    # Human Vault system (UI, backend, schema)
+│   ├── ui/                   # Frontend interface (React + Tailwind)
+│   ├── backend/              # Supabase client, FastAPI routes, auth
+│   ├── data_models/          # JSONSchemas or Supabase table formats
+│   └── README.md
+│
+├── signal/                   # Signal Layer (data parsing, embeddings)
+│   ├── processors/           # Spotify, Gmail, Rewind parsers etc.
+│   ├── embeddings/           # OpenAI, custom transformers, vector code
+│   ├── quality_scoring/      # Data quality logic + weights
+│   └── README.md
+│
+├── echo/                     # Personal AI agent (Echo)
+│   ├── memory/               # Persistent long-term memory
+│   ├── prompts/              # Prompt templates and role behavior
+│   ├── routing/              # Agent interaction and decision logic
+│   └── README.md
+│
+├── api_layer/                # Human + Enterprise API logic
+│   ├── access_control/       # Gatekeeper agents, consent logic
+│   ├── monetization/         # Royalties, usage tracking, payouts
+│   └── README.md
+│
+├── grid/                     # Value-routing and agent execution layer
+│   ├── compute/              # Agent execution infra
+│   ├── dividend_engine/      # Attribution + dividend routing logic
+│   └── README.md
+│
+├── mcp/                      # Model Context Protocol orchestrator
+│   ├── agents/               # System-level MCP actors
+│   ├── flows/                # .yaml or .json workflows, diagrams
+│   └── README.md
+│
+├── tests/                    # Test cases for each component
+│
+├── .env                      # Secrets and keys (gitignored)
+├── requirements.txt          # Python deps
+├── package.json              # JS deps (for UI)
+├── docker-compose.yml        # Optional: for unified local dev
+└── README.md                 # This file
+```
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/y.git
+cd y
+```
+
+2. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your credentials
+```
+
+3. Install dependencies:
+```bash
+# Python dependencies
+pip install -r requirements.txt
+
+# JavaScript dependencies
+npm install
+```
+
+4. Start the development environment:
+```bash
+docker-compose up
+```
+
+## 🎯 Key Features
+
+- **Data Sovereignty**: Complete control over your personal data
+- **AI Assistance**: Personalized AI agent that grows with you
+- **Value Attribution**: Fair compensation for data contributions
+- **Privacy First**: End-to-end encryption and zero-knowledge proofs
+- **Enterprise Ready**: Business-grade APIs and integrations
+
+## 🛠 Technology Stack
+
+- **Frontend**: React, Next.js, TailwindCSS
+- **Backend**: FastAPI, Supabase
+- **AI/ML**: OpenAI, Custom Transformers
+- **Database**: PostgreSQL, Vector Storage
+- **Infrastructure**: Docker, Kubernetes
+
+## 📚 Documentation
+
+Each component has its own detailed documentation:
+
+- [Vault Documentation](vault/README.md)
+- [Signal Layer Documentation](signal/README.md)
+- [Echo Documentation](echo/README.md)
+- [API Layer Documentation](api_layer/README.md)
+- [Grid Documentation](grid/README.md)
+- [MCP Documentation](mcp/README.md)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Add tests for new functionality
+4. Submit a pull request
+
+## 📄 License
+
+MIT
+
+## 🙏 Acknowledgments
+
+- OpenAI for their groundbreaking work in AI
+- The open-source community for their invaluable contributions
+- All the early adopters and contributors to the Y project
+
 # 🧬 Y: The Sovereign Interface
 
 **Y is not a product. Y is a direction.**  
@@ -34,7 +156,7 @@ But today:
 - AI systems scale on human input — without recognition or compensation.
 
 **Y exists to change that.**  
-To make sure humans don’t just survive in the age of AI — they **thrive**.
+To make sure humans don't just survive in the age of AI — they **thrive**.
 
 ---
 
@@ -74,7 +196,7 @@ Where your *Vault* is the beginning of everything.
 > If the future makes us unnecessary as workers,  
 > Then Y makes us **sacred as people**.
 
-Y doesn’t optimize for systems.  
+Y doesn't optimize for systems.  
 Y optimizes for the **soul**.
 
 ---
@@ -84,7 +206,7 @@ Y optimizes for the **soul**.
 This repository is the **central monorepo** of Y.  
 We use it to build, document, and evolve every part of the system.
 
-You’ll find:
+You'll find:
 - Specs
 - Architecture
 - Agents
@@ -112,7 +234,7 @@ That when the world stops needing us to work —
 we must build a world where we are still needed.  
 Not as cogs. But as whole, sovereign humans.
 
-Thank you for being here. We’re building the long game.
+Thank you for being here. We're building the long game.
 
 —
 
