@@ -273,3 +273,43 @@ Thank you for being here. We're building the long game.
 - **Grid**: The value-routing and attribution engine
 - **MCP**: Model Context Protocol, orchestrating context and memory for all agents
 
+## 🧩 Building on Y: Vault-Native Modules, Not Standalone Apps
+
+Y is not a generic developer platform for launching new apps. Instead, Y is a protocol and interface for building Vault-native modules—tools, dashboards, agents, and plugins that run inside the Vault, the user's trusted home and operating system for their data and intelligence.
+
+**If you're building on Y, you're building for the Vault.**
+
+- All modules run inside the Vault interface
+- All modules follow Y's data standards and schema
+- All modules respect consent and value-routing protocols
+- All modules are reviewed, authenticated, and optionally monetized through Y
+
+**You do not build standalone apps. You build Vault-native modules.**
+
+### Examples of Vault-Native Modules
+- Dashboards that visualize health, habits, or learning
+- AI agents trained on Vault signal
+- Research request layers (with user consent)
+- Simulation tools, coaching layers, family views
+- Plugins that extend Echo's capabilities
+
+### For Developers: How to Build a Vault-Native Module
+1. Register your module with the Vault, specifying its schema, permissions, and UI integration points.
+2. Use Y's APIs and schema registry to access and process user data (with consent).
+3. Ensure your module respects all consent, value-routing, and privacy protocols.
+4. Submit your module for review and authentication.
+5. Optionally, monetize your module through Y's value-routing engine.
+
+**All modules are always under user control: visible, revocable, and permissioned.**
+
+---
+
+## ❓ Protocol vs. Product: What's the Difference?
+
+- **Product:** A finished application or service for end users. (e.g., the Vault app itself)
+- **Protocol:** The open rules, APIs, and standards that define how modules interact with data, value, and consent—inside the Vault.
+
+**Y is a protocol and interface. The Vault is the one app that matters. Everything else is a module that lives inside it.**
+
+---
+

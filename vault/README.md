@@ -224,3 +224,30 @@ This folder contains all logic related to Vault initialization, input intake, sc
 <img src="https://raw.githubusercontent.com/yourusername/vault/main/assets/footer.png" alt="Footer" width="800"/>
 
 </div>
+
+## 🧩 Building Vault-Native Modules (For Developers)
+
+Y is not a platform for launching new, standalone apps. Instead, developers build Vault-native modules—dashboards, agents, plugins, and tools that run inside the Vault interface, under user control.
+
+**All modules:**
+- Run inside the Vault (the user's trusted home and OS)
+- Use Y's schema registry and data standards
+- Respect user consent and value-routing protocols
+- Are reviewed, authenticated, and optionally monetized through Y
+- Are always visible, revocable, and permissioned by the user
+
+### Examples of Vault-Native Modules
+- Health, habit, or learning dashboards
+- AI agents trained on Vault data
+- Research request layers (with user consent)
+- Simulation tools, coaching layers, family/collaborative views
+- Plugins that extend Echo's capabilities
+
+### How to Build a Module
+1. Register your module with the Vault (schema, permissions, UI integration)
+2. Use Y's APIs and schema registry for data access (with consent)
+3. Follow all consent, privacy, and value-routing protocols
+4. Submit for review/authentication
+5. Optionally monetize through Y's value-routing engine
+
+**You do not build standalone apps. You build modules that live inside the Vault.**
