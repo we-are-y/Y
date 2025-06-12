@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y — The Foundation of Sovereign Intelligence</title>
+    <title>Y — Sovereign Intelligence Infrastructure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
@@ -43,6 +43,7 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0;
+            position: relative;
         }
 
         .grid {
@@ -76,101 +77,246 @@
             opacity: 0.7;
         }
 
-        .header {
+        .system-header {
             position: relative;
             padding: 8rem 2rem 4rem;
-            text-align: left;
             max-width: 800px;
             margin: 0 auto;
         }
 
-        .header h1 {
-            font-size: 4rem;
+        .system-header h1 {
+            font-size: 3.5rem;
             font-weight: 300;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             color: var(--text);
             letter-spacing: -0.03em;
             line-height: 1.1;
         }
 
-        .header p {
-            font-size: 1.5rem;
+        .system-header p {
+            font-size: 1.25rem;
             color: var(--text-secondary);
             line-height: 1.6;
             font-weight: 300;
+            max-width: 600px;
         }
 
-        .manifesto {
+        .system-message {
             position: relative;
-            padding: 6rem 2rem;
-            background: var(--surface);
-            margin: 4rem 0;
-        }
-
-        .manifesto-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .manifesto p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .manifesto p:last-child {
-            margin-bottom: 0;
-        }
-
-        .value-score {
-            position: relative;
-            text-align: left;
             padding: 4rem 2rem;
             max-width: 800px;
             margin: 0 auto;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .value-score h2 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
+        .system-message p {
+            font-size: 1.5rem;
+            line-height: 1.6;
             color: var(--text);
-            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .value-score p {
+        .system-message p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .system-message p:last-child {
+            margin-bottom: 0;
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .vault-preview {
+            position: relative;
+            padding: 4rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .vault-preview-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .vault-preview-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .system-status {
+            position: relative;
+            padding: 2rem;
+            background: var(--surface);
+            margin: 2rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .status-item {
+            text-align: left;
+            position: relative;
+        }
+
+        .status-label {
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .data-categories {
+        .status-value {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .status-value.accent {
+            color: var(--accent);
+        }
+
+        .status-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            background: var(--text);
+            color: var(--background);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .status-item:hover .status-tooltip {
+            opacity: 1;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .data-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
+            gap: 1px;
             background: var(--border);
             margin: 4rem 0;
         }
 
-        .category {
+        .data-cell {
             background: var(--background);
-            padding: 3rem;
+            padding: 2rem;
             position: relative;
         }
 
-        .category h3 {
-            font-size: 1.5rem;
+        .data-cell h3 {
+            font-size: 1.25rem;
             font-weight: 400;
             margin-bottom: 1rem;
             color: var(--text);
             letter-spacing: -0.01em;
         }
 
-        .category p {
+        .data-cell p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1.6;
+        }
+
+        .data-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--surface);
+            border-radius: 4px;
+        }
+
+        .metric {
+            font-size: 0.9rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+        }
+
+        .metric-value {
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .metric-value.accent {
+            color: var(--accent);
+        }
+
+        .data-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .data-tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--surface);
+            color: var(--text-secondary);
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: 400;
         }
 
         .value-tag {
@@ -180,30 +326,151 @@
             color: var(--accent);
             font-size: 0.9rem;
             font-weight: 400;
+            position: relative;
+            cursor: help;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .value-tag:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-tag:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text);
+            color: var(--background);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .echo-insight {
+            background: var(--surface);
+            padding: 2rem;
+            margin: 4rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .echo-insight h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .echo-insight p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .echo-insight .action {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: var(--background);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .echo-insight .action:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 102, 255, 0.2);
+        }
+
+        .echo-insight .action::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+            20%, 100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .future-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .future-action {
+            padding: 0.75rem 1.5rem;
+            background: var(--surface);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: not-allowed;
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .future-action:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text);
+            color: var(--background);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            margin-bottom: 0.5rem;
         }
 
         .permissions {
             position: relative;
             padding: 4rem 2rem;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .permissions h2 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 300;
             margin-bottom: 2rem;
             color: var(--text);
             letter-spacing: -0.02em;
         }
 
-        .permissions ul {
-            list-style: none;
+        .permissions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
         }
 
         .permission-item {
             background: var(--surface);
-            margin-bottom: 1px;
             transition: background-color 0.3s ease;
         }
 
@@ -244,6 +511,9 @@
         .detail-label {
             color: var(--text-secondary);
             margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
         }
 
         .detail-value {
@@ -273,13 +543,13 @@
             color: var(--error);
         }
 
-        .expiry {
+        .system-identity {
+            text-align: center;
+            padding: 2rem;
             color: var(--text-secondary);
             font-size: 0.9rem;
-        }
-
-        .accent {
-            color: var(--accent);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
         @media (max-width: 768px) {
@@ -289,24 +559,32 @@
                 font-size: 1.5rem;
             }
 
-            .header {
+            .system-header {
                 padding: 4rem 1rem 2rem;
             }
 
-            .header h1 {
+            .system-header h1 {
                 font-size: 2.5rem;
             }
 
-            .data-categories {
+            .status-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .data-grid {
                 grid-template-columns: 1fr;
             }
 
-            .category {
-                padding: 2rem;
+            .permissions-grid {
+                grid-template-columns: 1fr;
             }
 
             .permission-details {
                 grid-template-columns: 1fr;
+            }
+
+            .future-actions {
+                flex-direction: column;
             }
         }
     </style>
@@ -316,52 +594,190 @@
     <a href="#" class="brand">Y</a>
     
     <div class="container">
-        <div class="header">
-            <h1>The Foundation of<br>Sovereign Intelligence</h1>
+        <div class="system-header">
+            <h1>Sovereign Intelligence Infrastructure</h1>
             <p>A new era of human-computer interaction, where every person owns their data, trains their own AI, and earns from what they generate.</p>
         </div>
 
-        <div class="manifesto">
-            <div class="manifesto-content">
-                <p>Y is not just a system. It's the infrastructure layer for sovereign human intelligence — a future where personal data becomes personal power, and every individual has agency over their digital existence.</p>
-                <p>We're building the foundation for a world where your data isn't just stored, but actively works for you. Where your digital footprint becomes your digital legacy. Where your intelligence isn't just captured, but amplified.</p>
+        <div class="system-message">
+            <p>You were never meant to spend your life doing work you don't care about.</p>
+            <p>Most people don't do boring jobs because they love them.</p>
+            <p>They do them because the system gave them no other way to survive.</p>
+            <p>But that system is breaking.</p>
+            <p>AI is replacing the work — and it's learning from you. From your data. Your intelligence.</p>
+            <p>It already knows your worth. It just hasn't paid you for it.</p>
+            <p>That's what Y changes.</p>
+            <p>Y turns your life into a Vault — encrypted, intelligent, and sovereign.</p>
+            <p>It gives you control. It gives you dignity. It gives you power.</p>
+            <p>You own your signal.</p>
+            <p>You train your AI.</p>
+            <p>You decide who gets access — and you get paid for what you generate.</p>
+            <p>This is not a product. It's the foundation of human sovereignty in the AI age.</p>
+            <p>Welcome to Y.</p>
+        </div>
+
+        <div class="vault-preview">
+            <div class="vault-preview-content">
+                <div class="status-grid">
+                    <div class="status-item">
+                        <div class="status-label">Vault Score</div>
+                        <div class="status-value accent" id="vaultScore">0</div>
+                        <div class="status-tooltip">Based on demand, freshness, and uniqueness</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Active Connections</div>
+                        <div class="status-value">3</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Data Types</div>
+                        <div class="status-value">12</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Last Updated <span class="pulse-dot"></span></div>
+                        <div class="status-value">Now</div>
+                    </div>
+                </div>
+                <div class="system-identity" style="margin-top: 2rem; text-align: center;">
+                    The foundation for sovereign intelligence — where data earns, learns, and remembers
+                </div>
             </div>
         </div>
 
-        <div class="value-score">
-            <h2>Vault Score: <span class="accent">850</span></h2>
-            <p>Your data is highly valuable and in demand</p>
-        </div>
-
-        <div class="data-categories">
-            <div class="category">
+        <div class="data-grid">
+            <div class="data-cell">
                 <h3>Cognitive Patterns</h3>
                 <p>Attention maps, focus cycles, and thought processes that define your unique cognitive signature. This is the raw material of your mind's architecture.</p>
-                <span class="value-tag">High Value</span>
+                <div class="data-metrics">
+                    <div class="metric">
+                        <div class="metric-label">Focus Score</div>
+                        <div class="metric-value accent">92%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Pattern Consistency</div>
+                        <div class="metric-value">87%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Peak Hours</div>
+                        <div class="metric-value">9AM - 11AM</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Last Updated</div>
+                        <div class="metric-value">2 hours ago</div>
+                    </div>
+                </div>
+                <div class="data-tags">
+                    <span class="data-tag">Attention Maps</span>
+                    <span class="data-tag">Focus Cycles</span>
+                    <span class="data-tag">Thought Patterns</span>
+                    <span class="data-tag">Productivity Metrics</span>
+                </div>
+                <span class="value-tag" data-tooltip="Requested 6x this week by AI Research Labs">High Value</span>
             </div>
-            <div class="category">
+            <div class="data-cell">
                 <h3>Emotional & Mental State</h3>
                 <p>Mood tracking, therapy notes, and emotional patterns that shape your mental landscape. The subtle rhythms of your inner world.</p>
-                <span class="value-tag">Medium Value</span>
+                <div class="data-metrics">
+                    <div class="metric">
+                        <div class="metric-label">Mood Stability</div>
+                        <div class="metric-value accent">85%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Stress Level</div>
+                        <div class="metric-value">Low</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Energy Pattern</div>
+                        <div class="metric-value">Morning Peak</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Last Updated</div>
+                        <div class="metric-value">1 hour ago</div>
+                    </div>
+                </div>
+                <div class="data-tags">
+                    <span class="data-tag">Mood Tracking</span>
+                    <span class="data-tag">Therapy Notes</span>
+                    <span class="data-tag">Emotional Patterns</span>
+                    <span class="data-tag">Wellness Metrics</span>
+                </div>
+                <span class="value-tag" data-tooltip="Used by 2 wellness applications">Medium Value</span>
             </div>
-            <div class="category">
+            <div class="data-cell">
                 <h3>Biometric Health</h3>
                 <p>Sleep data, HRV, cycle tracking, and other vital signs that map your physical wellbeing. The quantifiable story of your body.</p>
-                <span class="value-tag">High Value</span>
+                <div class="data-metrics">
+                    <div class="metric">
+                        <div class="metric-label">Sleep Quality</div>
+                        <div class="metric-value accent">94%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">HRV Score</div>
+                        <div class="metric-value">78ms</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Recovery Status</div>
+                        <div class="metric-value">Optimal</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Last Updated</div>
+                        <div class="metric-value">Now</div>
+                    </div>
+                </div>
+                <div class="data-tags">
+                    <span class="data-tag">Sleep Data</span>
+                    <span class="data-tag">HRV Tracking</span>
+                    <span class="data-tag">Vital Signs</span>
+                    <span class="data-tag">Recovery Metrics</span>
+                </div>
+                <span class="value-tag" data-tooltip="High demand from medical research">High Value</span>
             </div>
-            <div class="category">
+            <div class="data-cell">
                 <h3>Behavioral Metadata</h3>
                 <p>App usage, location patterns, and habits that form your digital footprint. The patterns that define your digital existence.</p>
-                <span class="value-tag">Medium Value</span>
+                <div class="data-metrics">
+                    <div class="metric">
+                        <div class="metric-label">Productivity</div>
+                        <div class="metric-value accent">89%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Focus Sessions</div>
+                        <div class="metric-value">4.2/day</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Digital Balance</div>
+                        <div class="metric-value">Optimal</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Last Updated</div>
+                        <div class="metric-value">5 min ago</div>
+                    </div>
+                </div>
+                <div class="data-tags">
+                    <span class="data-tag">App Usage</span>
+                    <span class="data-tag">Location Data</span>
+                    <span class="data-tag">Habit Tracking</span>
+                    <span class="data-tag">Digital Patterns</span>
+                </div>
+                <span class="value-tag" data-tooltip="Used by 3 AI assistants">Medium Value</span>
+            </div>
+        </div>
+
+        <div class="echo-insight">
+            <h2>Echo Insight</h2>
+            <p>I've noticed your focus patterns are 92% consistent — want to build a Focus Agent to amplify them?</p>
+            <div class="future-actions">
+                <a href="#" class="action">Train Focus Agent</a>
+                <button class="future-action" data-tooltip="See how your data earns once agents go live">Connect More Data</button>
+                <button class="future-action" data-tooltip="Coming soon: View your data's earning potential">View Monetization Flow</button>
             </div>
         </div>
 
         <div class="permissions">
-            <h2>Active Permissions</h2>
-            <ul>
-                <li class="permission-item">
+            <h2>Active Connections</h2>
+            <div class="permissions-grid">
+                <div class="permission-item">
                     <div class="permission-header">
-                        <span>Research Company A - Health Data</span>
+                        <span>Research Company A</span>
                         <span class="status active">Active</span>
                     </div>
                     <div class="permission-content">
@@ -384,10 +800,10 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="permission-item">
+                </div>
+                <div class="permission-item">
                     <div class="permission-header">
-                        <span>AI Assistant B - Behavioral Data</span>
+                        <span>AI Assistant B</span>
                         <span class="status expiring">Expiring Soon</span>
                     </div>
                     <div class="permission-content">
@@ -410,10 +826,10 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li class="permission-item">
+                </div>
+                <div class="permission-item">
                     <div class="permission-header">
-                        <span>Wellness App C - Biometric Data</span>
+                        <span>Wellness App C</span>
                         <span class="status active">Active</span>
                     </div>
                     <div class="permission-content">
@@ -436,12 +852,56 @@
                             </div>
                         </div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="system-identity">
+            Y — The infrastructure layer for human-AI symbiosis
         </div>
     </div>
 
     <script>
+        // Animate Vault Score on load
+        const vaultScore = document.getElementById('vaultScore');
+        let score = 0;
+        const targetScore = 850;
+        const duration = 2000; // 2 seconds
+        const interval = 20; // Update every 20ms
+        const steps = duration / interval;
+        const increment = targetScore / steps;
+
+        const animateScore = () => {
+            score += increment;
+            if (score >= targetScore) {
+                score = targetScore;
+                vaultScore.textContent = Math.round(score);
+                return;
+            }
+            vaultScore.textContent = Math.round(score);
+            setTimeout(animateScore, interval);
+        };
+
+        // Start animation when page loads
+        window.addEventListener('load', () => {
+            // Start Vault Score animation
+            animateScore();
+            
+            // Start system message animation
+            const paragraphs = document.querySelectorAll('.system-message p');
+            paragraphs.forEach((p, index) => {
+                setTimeout(() => {
+                    p.classList.add('visible');
+                }, index * 800); // 800ms delay between each paragraph
+            });
+
+            // Show Vault preview after message
+            setTimeout(() => {
+                document.querySelector('.vault-preview-content').classList.add('visible');
+            }, paragraphs.length * 800 + 1000); // After all paragraphs + 1s
+        });
+
+        // Toggle permission details
         document.querySelectorAll('.permission-header').forEach(header => {
             header.addEventListener('click', () => {
                 const content = header.nextElementSibling;
