@@ -77,31 +77,15 @@ Y/
 
 ## 🚀 Getting Started
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/y.git
-cd y
-```
+### For Users
+1. Visit [Y's website](https://we-are-y.com)
+2. Create your Vault
+3. Start exploring modules
 
-2. Set up environment variables:
-```bash
-cp .env.example .env
-# Edit .env with your credentials
-```
-
-3. Install dependencies:
-```bash
-# Python dependencies
-pip install -r requirements.txt
-
-# JavaScript dependencies
-npm install
-```
-
-4. Start the development environment:
-```bash
-docker-compose up
-```
+### For Developers
+1. Review our [Module Development Guide](docs/modules.md)
+2. Join our developer community
+3. Request access to development resources
 
 ## 🎯 Key Features
 
@@ -151,26 +135,22 @@ We welcome contributions to Y! Here's how you can get involved:
 3. **Community**: Join our community discussions
 
 ### Repository Access
-- **Public Access**: The repository is public to encourage transparency and community involvement
-- **Module Development**: Developers can fork and clone to build and test modules
+- **Documentation**: Core protocol documentation and module development guidelines are public
+- **Implementation**: The actual implementation is private and requires approval
 - **Security**: All contributions are reviewed for security and compliance
-- **Licensing**: See our [LICENSE](LICENSE) file for details
+- **Access**: Contact us for development access
 
 ### Getting Started
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+1. Review the documentation
+2. Join our developer community
+3. Request development access
+4. Submit your module proposals
 
-## 📄 License
+## 📞 Contact
 
-MIT
-
-## 🙏 Acknowledgments
-
-- OpenAI for their groundbreaking work in AI
-- The open-source community for their invaluable contributions
-- All the early adopters and contributors to the Y project
+- Website: [we-are-y.com](https://we-are-y.com)
+- Email: [hello@we-are-y.com](mailto:hello@we-are-y.com)
+- Twitter: [@we_are_y](https://twitter.com/we_are_y)
 
 # 🧬 Y: The Sovereign Interface
 
